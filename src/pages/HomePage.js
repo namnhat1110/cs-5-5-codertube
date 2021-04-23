@@ -9,7 +9,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-
+  console.log(movies[1]);
   const fetchData = async () => {
     const response = await fetch(
       `${URL_BACKEND}movie/now_playing?api_key=${API_KEY}`
@@ -25,7 +25,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Carousel className="container">
+      <Carousel fade className="container">
         <Carousel.Item>
           <img
             className="d-block w-100 "
@@ -62,6 +62,7 @@ const HomePage = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+
       <div>
         <hr style={{ background: "grey" }} />
         <h1 style={{ color: "grey" }}>Now-Playing</h1>
