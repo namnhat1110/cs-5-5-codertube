@@ -9,7 +9,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-  console.log(movies[1]);
+
   const fetchData = async () => {
     const response = await fetch(
       `${URL_BACKEND}movie/now_playing?api_key=${API_KEY}`
@@ -24,45 +24,54 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <Carousel fade className="container">
-        <Carousel.Item>
-          <img
-            className="d-block w-100 "
-            src={"https://image.tmdb.org/t/p/w500/" + movies[0].backdrop_path}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>{movies[0].title}</h3>
-            <p>{movies[0].overview}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 "
-            src={"https://image.tmdb.org/t/p/w500/" + movies[1].backdrop_path}
-            alt="Second slide"
-          />
+    <div className="mt-3 ">
+      {movies.slice(0, 1).map((m) => {
+        return (
+          <Carousel fade className="container">
+            <Carousel.Item>
+              <img
+                className="d-block w-100 "
+                src={
+                  "https://image.tmdb.org/t/p/w500/" + movies[0].backdrop_path
+                }
+                alt="First slide"
+              />
+              <Carousel.Caption>
+                <h3>{movies[0].title}</h3>
+                <p>{movies[0].overview}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100 "
+                src={
+                  "https://image.tmdb.org/t/p/w500/" + movies[1].backdrop_path
+                }
+                alt="Second slide"
+              />
 
-          <Carousel.Caption>
-            <h3>{movies[1].title}</h3>
-            <p>{movies[1].overview}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 "
-            src={"https://image.tmdb.org/t/p/w500/" + movies[2].backdrop_path}
-            alt="Third slide"
-          />
+              <Carousel.Caption>
+                <h3>{movies[1].title}</h3>
+                <p>{movies[1].overview}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100 "
+                src={
+                  "https://image.tmdb.org/t/p/w500/" + movies[2].backdrop_path
+                }
+                alt="Third slide"
+              />
 
-          <Carousel.Caption>
-            <h3>{movies[2].title}</h3>
-            <p>{movies[2].overview}</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-
+              <Carousel.Caption>
+                <h3>{movies[2].title}</h3>
+                <p>{movies[2].overview}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        );
+      })}
       <div>
         <hr style={{ background: "grey" }} />
         <h1 style={{ color: "grey" }}>Now-Playing</h1>
