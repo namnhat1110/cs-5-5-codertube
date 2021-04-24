@@ -25,6 +25,8 @@ const HomePage = () => {
 
   return (
     <div className="mt-3 ">
+      <h3 style={{ color: "grey", textAlign: "left" }}>Trending</h3>
+
       {movies.slice(0, 1).map((m) => {
         return (
           <Carousel fade className="container">
@@ -74,7 +76,7 @@ const HomePage = () => {
       })}
       <div>
         <hr style={{ background: "grey" }} />
-        <h1 style={{ color: "grey" }}>Now-Playing</h1>
+        <h3 style={{ color: "grey", textAlign: "left" }}>Now-Playing</h3>
         <Container>
           <Row className="pl-3 m-3">
             {movies.map((m) => {
