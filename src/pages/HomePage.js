@@ -38,7 +38,7 @@ const HomePage = () => {
               />
               <Carousel.Caption>
                 <h3>{movies[0].title}</h3>
-                <p>{movies[0].overview}</p>
+                <p className="small-text">{movies[0].overview}</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -52,7 +52,7 @@ const HomePage = () => {
 
               <Carousel.Caption>
                 <h3>{movies[1].title}</h3>
-                <p>{movies[1].overview}</p>
+                <p className="small-text">{movies[1].overview}</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -66,7 +66,7 @@ const HomePage = () => {
 
               <Carousel.Caption>
                 <h3>{movies[2].title}</h3>
-                <p>{movies[2].overview}</p>
+                <p className="small-text">{movies[2].overview}</p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>

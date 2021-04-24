@@ -4,3 +4,7 @@
   background: linear-gradient(to right, #000000, #434343);
   text-align: center;
 }
+
+.small-text {
+  font-size: 10px;
+}
