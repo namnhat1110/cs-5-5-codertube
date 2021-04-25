@@ -9,9 +9,18 @@ const URL_BACKEND = process.env.REACT_APP_BACKEND_MOVIE;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const HomePage = () => {
+  const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
   const [trendingM, setTrendingM] = useState([]);
 
+  const fetchGenres = async () => {
+    const response = await fetch(
+      `${URL_BACKEND}genre/movie/list?api_key=${API_KEY}`
+    );
+    const json = await response.json();
+    console.log(json);
+    setGenres(json);
+  };
   const fetchTrendingM = async () => {
     const response = await fetch(
       `${URL_BACKEND}trending/movie/week?api_key=${API_KEY}`
@@ -24,11 +33,12 @@ const HomePage = () => {
       `${URL_BACKEND}movie/now_playing?api_key=${API_KEY}`
     );
     const json = await response.json();
-
+    console.log(json.results);
     setMovies(json.results);
   };
 
   useEffect(() => {
+    fetchGenres();
     fetchTrendingM();
     fetchData();
   }, []);
