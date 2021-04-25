@@ -8,3 +8,53 @@
 .small-text {
   font-size: 10px;
 }
+
+.blur-img {
+  filter: blur(9px);
+  -webkit-filter: blur(9px);
+
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* .detail-text {
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4); 
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}  */
+
+.detail-content {
+  display: flex;
+}
+
+.detail-image {
+  height: 570px;
+}
+
+.detail-text {
+  text-align: left;
+  margin-left: 30px;
+  color: rgb(223, 216, 207);
+}
+
+footer {
+  color: white;
+  display: flex;
+  padding: 20px;
+  background-color: #343a40;
+}

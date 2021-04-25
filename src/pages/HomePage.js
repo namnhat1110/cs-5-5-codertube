@@ -1,5 +1,6 @@
 import React from "react";
-import { Carousel, Card, Button, Row, Container } from "react-bootstrap";
+
+import { Carousel, Card, Button, Row, Container, Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineStar } from "react-icons/ai";
@@ -33,35 +34,41 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="mt-3 container">
-      <h3 style={{ color: "grey", textAlign: "left" }}>Trending</h3>
+    <div className="mt-3 ">
+      <h3 className="container" style={{ color: "grey", textAlign: "left" }}>
+        Trending
+      </h3>
 
       {trendingM.slice(0, 1).map(() => {
         return (
           <Carousel fade className="container">
             <Carousel.Item>
-              <img
-                className="d-block w-100 "
-                src={
-                  "https://image.tmdb.org/t/p/w500/" +
-                  trendingM[0].backdrop_path
-                }
-                alt="First slide"
-              />
+              <Nav.Link as={Link} to={"movie/" + trendingM[0].id}>
+                <img
+                  className="d-block w-100 "
+                  src={
+                    "https://image.tmdb.org/t/p/w500/" +
+                    trendingM[0].backdrop_path
+                  }
+                  alt="First slide"
+                />
+              </Nav.Link>
               <Carousel.Caption>
                 <h3>{trendingM[0].title}</h3>
                 <p className="small-text">{trendingM[0].overview}</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block w-100 "
-                src={
-                  "https://image.tmdb.org/t/p/w500/" +
-                  trendingM[1].backdrop_path
-                }
-                alt="Second slide"
-              />
+              <Nav.Link as={Link} to={"movie/" + trendingM[1].id}>
+                <img
+                  className="d-block w-100 "
+                  src={
+                    "https://image.tmdb.org/t/p/w500/" +
+                    trendingM[1].backdrop_path
+                  }
+                  alt="Second slide"
+                />
+              </Nav.Link>
 
               <Carousel.Caption>
                 <h3>{trendingM[1].title}</h3>
@@ -69,14 +76,16 @@ const HomePage = () => {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block w-100 "
-                src={
-                  "https://image.tmdb.org/t/p/w500/" +
-                  trendingM[2].backdrop_path
-                }
-                alt="Third slide"
-              />
+              <Nav.Link as={Link} to={"movie/" + trendingM[2].id}>
+                <img
+                  className="d-block w-100 "
+                  src={
+                    "https://image.tmdb.org/t/p/w500/" +
+                    trendingM[2].backdrop_path
+                  }
+                  alt="Third slide"
+                />
+              </Nav.Link>
 
               <Carousel.Caption>
                 <h3>{trendingM[2].title}</h3>
@@ -84,14 +93,16 @@ const HomePage = () => {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block w-100 "
-                src={
-                  "https://image.tmdb.org/t/p/w500/" +
-                  trendingM[3].backdrop_path
-                }
-                alt="Third slide"
-              />
+              <Nav.Link as={Link} to={"movie/" + trendingM[3].id}>
+                <img
+                  className="d-block w-100 "
+                  src={
+                    "https://image.tmdb.org/t/p/w500/" +
+                    trendingM[3].backdrop_path
+                  }
+                  alt="Third slide"
+                />
+              </Nav.Link>
 
               <Carousel.Caption>
                 <h3>{trendingM[3].title}</h3>
@@ -99,14 +110,16 @@ const HomePage = () => {
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block w-100 "
-                src={
-                  "https://image.tmdb.org/t/p/w500/" +
-                  trendingM[4].backdrop_path
-                }
-                alt="Third slide"
-              />
+              <Nav.Link as={Link} to={"movie/" + trendingM[4].id}>
+                <img
+                  className="d-block w-100 "
+                  src={
+                    "https://image.tmdb.org/t/p/w500/" +
+                    trendingM[4].backdrop_path
+                  }
+                  alt="Third slide"
+                />
+              </Nav.Link>
 
               <Carousel.Caption>
                 <h3>{trendingM[4].title}</h3>
@@ -116,7 +129,7 @@ const HomePage = () => {
           </Carousel>
         );
       })}
-      <div>
+      <div className="container">
         <hr style={{ background: "grey" }} />
         <h3 style={{ color: "grey", textAlign: "left" }}>Now-Playing</h3>
         <Container>
@@ -164,7 +177,9 @@ const HomePage = () => {
                         18+
                       </Card.Text>
                     )}
-                    <Button variant="primary">Details</Button>
+                    <Nav.Link as={Link} to={"movie/" + m.id}>
+                      <Button variant="primary">Details</Button>
+                    </Nav.Link>
                   </Card.Body>
                 </Card>
               );
