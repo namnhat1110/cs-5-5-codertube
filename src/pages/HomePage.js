@@ -24,7 +24,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="mt-3 ">
+    <div className="mt-3 container">
       <h3 style={{ color: "grey", textAlign: "left" }}>Trending</h3>
 
       {movies.slice(0, 1).map((m) => {
@@ -78,7 +78,7 @@ const HomePage = () => {
         <hr style={{ background: "grey" }} />
         <h3 style={{ color: "grey", textAlign: "left" }}>Now-Playing</h3>
         <Container>
-          <Row className="pl-3 m-3">
+          <Row className="pl-3 m-2">
             {movies.map((m) => {
               return (
                 <Card
