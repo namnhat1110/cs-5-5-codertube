@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Card, Button, Row, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiOutlineStar } from "react-icons/ai";
+import PublicNavbar from "../components/PublicNavbar";
 
 const URL_BACKEND = process.env.REACT_APP_BACKEND_MOVIE;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -26,6 +27,7 @@ const PopularMovies = () => {
   console.log(movies);
   return (
     <div>
+      <PublicNavbar />
       <div className="container">
         <hr style={{ background: "grey" }} />
         <h3 style={{ color: "grey", textAlign: "left" }}>Popular</h3>

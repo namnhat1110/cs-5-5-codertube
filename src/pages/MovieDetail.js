@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import { FaKissWinkHeart } from "react-icons/fa";
 import { GoPrimitiveDot } from "react-icons/go";
 import "../App.css";
+import PublicNavbar from "../components/PublicNavbar";
 
 const URL_BACKEND = process.env.REACT_APP_BACKEND_MOVIE;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -51,6 +52,7 @@ const MovieDetail = () => {
   if (!movie.id) return <h1>Loading</h1>;
   return (
     <div>
+      <PublicNavbar />
       <div className="container">
         <Card className="bg-dark text-white">
           <Card.Img
