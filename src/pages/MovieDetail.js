@@ -31,18 +31,22 @@ const MovieDetail = () => {
   //   const json = await response.json();
   //   console.log({ json });
   // };
-  const fetchData = async () => {
-    const response = await fetch(
-      `${URL_BACKEND}movie/${id}?api_key=${API_KEY}`
-    );
-    const json = await response.json();
-    console.log({ json });
-    setMovie(json);
-  };
+
 
   useEffect(() => {
+
+    const fetchData = async () => {
+      const response = await fetch(
+        `${URL_BACKEND}movie/${id}?api_key=${API_KEY}`
+      );
+      const json = await response.json();
+      console.log({ json });
+      setMovie(json);
+    };
+
+
     fetchData();
-  }, []);
+  }, [id]);
 
   if (!movie.id) return <h1>Loading</h1>;
   return (
@@ -55,7 +59,7 @@ const MovieDetail = () => {
           />
           <Card.ImgOverlay>
             <div className="detail-content">
-              <img
+              <img alt="posterimage"
                 className="detail-image"
                 src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
               />

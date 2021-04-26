@@ -22,6 +22,7 @@ const HomePage = () => {
     );
     const json = await response.json();
     console.log(json);
+    console.log(genres)
     setGenres(json);
   };
   const fetchTrendingM = async () => {
@@ -43,7 +44,9 @@ const HomePage = () => {
   useEffect(() => {
     fetchGenres();
     fetchTrendingM();
+    // eslint-disable-next-line 
     fetchData();
+    // eslint-disable-next-line 
   }, []);
 
   const onFetchYoutubeVideoId = async (id) => {
