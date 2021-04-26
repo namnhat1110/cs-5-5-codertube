@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineStar } from "react-icons/ai";
 import ModalBox from "../components/ModalBox";
+import PublicNavbar from "../components/PublicNavbar";
 
 const URL_BACKEND = process.env.REACT_APP_BACKEND_MOVIE;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -12,6 +13,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const HomePage = () => {
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [query, setQuery] = useState(``);
   const [trendingM, setTrendingM] = useState([]);
   const [trailerKey, setTrailerKey] = useState(``)
   const [modalOpen, setModalOpen] = useState(false)
@@ -33,19 +35,27 @@ const HomePage = () => {
     setTrendingM(json.results);
   };
   const fetchData = async () => {
-    const response = await fetch(
-      `${URL_BACKEND}movie/now_playing?api_key=${API_KEY}`
-    );
+    let urlParams = `${URL_BACKEND}movie/now_playing?api_key=${API_KEY}`;
+    if (query !== ``) {
+      urlParams = `${URL_BACKEND}search/movie?api_key=${API_KEY}&query=${query}`;
+    }
+    const response = await fetch(urlParams);
     const json = await response.json();
     console.log(json.results);
     setMovies(json.results);
   };
 
+
+  useEffect(() => {
+    // eslint-disable-next-line 
+    fetchData();
+    // eslint-disable-next-line 
+  }, [query]);
+
+
   useEffect(() => {
     fetchGenres();
     fetchTrendingM();
-    // eslint-disable-next-line 
-    fetchData();
     // eslint-disable-next-line 
   }, []);
 
@@ -60,7 +70,9 @@ const HomePage = () => {
   }
 
   return (
+
     <div className="mt-3 ">
+      <PublicNavbar query={query} setQuery={setQuery} />
       <h3 className="container" style={{ color: "grey", textAlign: "left" }}>
         Trending
       </h3>

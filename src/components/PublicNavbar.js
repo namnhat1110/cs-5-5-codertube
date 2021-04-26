@@ -10,7 +10,11 @@ import {
 import logo from "../logo.svg";
 import { Link } from "react-router-dom";
 
-const PublicNavbar = () => {
+const PublicNavbar = ({ query, setQuery }) => {
+  const onChange = (e) => {
+    e.preventDefault();
+    setQuery(e.target.value);
+  }
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -40,7 +44,8 @@ const PublicNavbar = () => {
             </NavDropdown>
           </Nav>
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <FormControl type="text" placeholder="Movie..." value={query}
+              onChange={onChange} className="mr-sm-2" />
             <Button variant="outline-success">Search</Button>
           </Form>
         </Navbar.Collapse>
