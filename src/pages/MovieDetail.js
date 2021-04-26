@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Card, CardDeck } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { FaKissWinkHeart } from "react-icons/fa";
 import { GoPrimitiveDot } from "react-icons/go";
 import "../App.css";

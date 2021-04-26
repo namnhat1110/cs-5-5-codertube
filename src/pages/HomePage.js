@@ -4,6 +4,7 @@ import { Carousel, Card, Button, Row, Container, Nav } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineStar } from "react-icons/ai";
+import ModalBox from "../components/ModalBox";
 
 const URL_BACKEND = process.env.REACT_APP_BACKEND_MOVIE;
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -12,6 +13,8 @@ const HomePage = () => {
   const [genres, setGenres] = useState([]);
   const [movies, setMovies] = useState([]);
   const [trendingM, setTrendingM] = useState([]);
+  const [trailerKey, setTrailerKey] = useState(``)
+  const [modalOpen, setModalOpen] = useState(false)
 
   const fetchGenres = async () => {
     const response = await fetch(
@@ -42,6 +45,16 @@ const HomePage = () => {
     fetchTrendingM();
     fetchData();
   }, []);
+
+  const onFetchYoutubeVideoId = async (id) => {
+    const resp = await fetch(`${URL_BACKEND}movie/${id}/videos?api_key=${API_KEY}`)
+    const json = await resp.json()
+    console.log({ json })
+    if (json.results.length > 0) {
+      setTrailerKey(json.results[0])
+      setModalOpen(!modalOpen)
+    }
+  }
 
   return (
     <div className="mt-3 ">
@@ -143,6 +156,12 @@ const HomePage = () => {
         <hr style={{ background: "grey" }} />
         <h3 style={{ color: "grey", textAlign: "left" }}>Now-Playing</h3>
         <Container>
+          <ModalBox
+            trailerKey={trailerKey}
+            setTrailerKey={setTrailerKey}
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+          />
           <Row className="pl-3 m-2">
             {movies.map((m) => {
               return (
@@ -187,6 +206,7 @@ const HomePage = () => {
                         18+
                       </Card.Text>
                     )}
+                    <Button onClick={() => onFetchYoutubeVideoId(m.id)}>Trailer</Button>
                     <Nav.Link as={Link} to={"movie/" + m.id}>
                       <Button variant="primary">Details</Button>
                     </Nav.Link>
